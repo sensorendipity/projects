@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>dc.js - Line Chart Example</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="js/dc.js-1.6.0/dc.css"/>
+</head>
+<body>
+
+<div id="original_data_chart"></div>
+
+<script type="text/javascript" src="js/d3.js"></script>
+<script type="text/javascript" src="js/crossfilter.js"></script>
+<script type="text/javascript" src="js/dc.js"></script>
+<script type="text/javascript">
+
+    var originalDataChart = dc.lineChart("#original_data_chart");
+    d3.csv("data/walk.csv", function(error, experiments) {
+        var ndx                 = crossfilter(experiments),
+        gravityXDimension        = ndx.dimension(function(d) {
+            return +d.Gravity_t;}
+        ),
+        gravityXDimensionGroup  = gravityXDimension.group().reduceSum(function(d) {return +d.Gravity_z});
+
+
+        originalDataChart
+                .width(1600) // (optional) define chart width, :default = 200
+                .height(900)  // (optional) define chart height, :default = 200
+                .margins({top: 10, right: 50, bottom : 30, left: 40})
+                .x(d3.scale.linear().domain([0, 100]))
+                .dimension(gravityXDimension)
+                .group(gravityXDimensionGroup);
+
+        originalDataChart.render();
+
+
+    });
+
+</script>
+
+</body>
+</html>

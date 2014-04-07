@@ -1,0 +1,16 @@
+.row {
+    width : 100%;
+    display : inline-block;
+
+}
+
+body {
+    margin : 1em;
+}
+#settings_div {
+    margin : 1em;
+}
+
+tr.selected {
+    background: lightgrey;
+}
