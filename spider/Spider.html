@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+  <style>
+    *{
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Body */
+body {
+    margin: 0;
+    padding: 0;
+    background: #000;
+    color: #FFF;
+    overflow: hidden;
+}
+
+div{
+	float:left;
+	position: relative;
+}
+
+button {
+    float:right;
+    min-width: 70px;
+}
+span{
+	float:left;
+	position: relative;
+}
+.sensorList{
+	list-style: none;
+	float:left;
+	margin-top: 10px; 
+	padding: 5px;
+	width:230px;
+	overflow-y: scroll; 
+	overflow-x: hidden;
+	background: #2c3e50;
+
+}
+
+.sensorList li{
+	padding: 5px;
+	margin-bottom: 5px;
+	background: #34495e;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	height: 30px;
+}
+
+.sensorList li:hover{
+	background: #7f8c8d;
+}
+
+li.sortable-placeholder{
+	border: 1px dashed #CCC;
+	background: none;
+}
+
+li #name{
+	float:left;
+	width: 85%;
+	overflow-x: hidden;
+}
+
+#colorinput{
+	width: 10%;
+	float:right;
+}
+#settings{
+    float: left;
+    position: relative;
+    width: 250px;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    padding: 10px;
+    margin-right: 5px;
+    background: #2980b9;
+    overflow: auto;
+}
+#spiderArea{
+	float:right;
+	background: transparent;
+
+	position: absolute;
+	top:50px;
+    right: 300px;
+}
+#webOption{
+	width: 100%;
+}
+
+</style>
+</head>
+<body>
+	<div id="settings">
+		<div id="startSettings">
+			<span>SENSOR IP ADDRESS :</span>
+			<input type="text" id="input_ip_address" value="http://192.168.1.128:8765/"></input>
+			<button type="button" id="button_connect" onclick="connect()">Connect</button>
+		 	<button type="button" id="button_start" onclick="start()">Start</button>
+		</div>
+		<span>Spiderweb:</span>
+		<div id="webOption">
+		 	<button type="button" id="hide_web" onclick="changeWeb()">Hide</button>
+		</div>
+		 <div>
+		 	<span>Available Sensors: </span><ul class="sensorList" id="hiddenSensors"></ul>
+		 </div>
+		<div>
+			<span>Active Sensors: </span><ul class="sensorList" id="activeSensors"></ul>
+		</div>
+	</div>
+	<div id="spiderArea"></div>
+
+	<script type="text/javascript" src="js/jquery.js"></script> <!--Change this to minified version later -->
+	<script type="text/javascript" src="js/jquery.sortable.js"></script>
+	<script type="text/javascript" src="js/Three/three-r65.js"></script>
+	<script type="text/javascript" src="js/Spider.js"></script>
+</body>
+</html>
