@@ -101,6 +101,7 @@ function populateList()
 		// the 'key in' takes all the objects under "sensors" in the data.
 		for(var key in sensorJSON)
 		{
+			if(sensorJSON[key] != null){
 			// Disabling wifi
 			if(sensorJSON[key].type != "wifi")
 			{
@@ -133,6 +134,7 @@ function populateList()
 				}
 			}
 		}
+	}
 		$(function() 
 		{
 			// Here we connect the two lists together, so that items can be dragged between them.

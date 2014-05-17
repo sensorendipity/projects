@@ -109,12 +109,15 @@ function init()
 		var keys = {};
 		for(var key in sensorJSON)
 		{
-			if(sensorJSON[key].type != "wifi")
-			{
-				if(sensorJSON[key].values != null)
+			//Check for null keys, since some devices add these in the JSON
+			if(sensorJSON[key] != null){
+				if(sensorJSON[key].type != "wifi")
 				{
-					keys[key] = sensorJSON[key].values;
-					checkboxes.push(new Checkbox(key, keys[key], sensorJSON[key].type));
+					if(sensorJSON[key].values != null)
+					{
+						keys[key] = sensorJSON[key].values;
+						checkboxes.push(new Checkbox(key, keys[key], sensorJSON[key].type));
+					}
 				}
 			}
 		}

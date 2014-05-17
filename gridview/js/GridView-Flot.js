@@ -60,7 +60,8 @@ function connect()
 
         // Find all sensors and the axis to each sensor.
         for(var key in sensorJSON){
-            availableSensors.push(sensorJSON[key].type);
+            if(sensorJSON[key] != null){
+                availableSensors.push(sensorJSON[key].type);
             // We don't handle wifi yet, so we exlude this from the list.
             // The rest of the sensors are added to the dropdown list.
             if(sensorJSON[key].type != "wifi")
@@ -74,6 +75,7 @@ function connect()
                 dropdownList.appendChild(option);
             }
         }
+    }
     
     // Now all sensors are added to the list, we are allowed to add them to the scene.
     document.getElementById("button_add").disabled = false;
